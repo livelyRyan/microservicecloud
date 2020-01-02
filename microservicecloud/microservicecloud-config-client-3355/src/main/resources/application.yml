@@ -1,0 +1,4 @@
+# 象征性的创建一下application.yml,其实可以没有该文件,当存在bootstrap.yml配置时
+spring:
+  application:
+    name: microservicecloud-config-client

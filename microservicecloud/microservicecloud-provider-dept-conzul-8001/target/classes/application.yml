@@ -1,0 +1,29 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: microservicecloud-dept-consul
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        # serviceName不填的话，默认是spring.application.name
+        # serviceName: microservicecloud-dept-consul
+        tags: version=1.0,author=ryan
+#        healthCheckPath默认就是/health
+#        healthCheckPath: /health
+#        healthCheckInterval: 5s
+        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+management:
+  security:
+    enabled: false
+  # 开启consul健康检查.即consul自己实现/health接口来做健康检查
+  health:
+    consul:
+      enabled: false 
+info:
+  app.name: atguigu-microservicecloud
+  company.name: www.atguigu.com
+  build.artifactId: microservicecloud-provider-dept-consul-8001
+  build.version: 0.0.1-SNAPSHOT

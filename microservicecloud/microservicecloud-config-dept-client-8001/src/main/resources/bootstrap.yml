@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    config:
+      name: microservicecloud-config-dept-client #需要从github上读取的资源名称，注意没有yml后缀名
+      #profile配置是什么就取什么配置dev or test
+      profile: dev
+#      profile: test
+      label: master
+      uri: http://localhost:3344  #SpringCloudConfig获取的服务地址
+#      discovery: # discovery配置使用eureka的能力，通过服务名去找microservicecloud-config服务  
+#        enabled: true
+#        serviceId: microservicecloud-config
+  rabbitmq:
+    host: localhost    #公网地址
+    port: 15672
+    username: guest
+    password: guest 
+    
+management: 
+  security: # springboot 1.5.X 以上默认开通了安全认证，需要关闭
+    enabled: false

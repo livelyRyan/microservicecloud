@@ -1,0 +1,24 @@
+server:
+  port: 9001
+spring: 
+  application: 
+    name: hystirx-turbine
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+      
+turbine: 
+  appConfig: 
+    MICROSERVICECLOUD-DEPT # 指定要聚合的服务名称,多个服务之间用","隔开,turbine会从eureka中根据服务名查询出端点
+  aggregator: 
+    clusterConfig: # 根据服务名划分集群.比如turbine.appConfig下有n个服务,那么turbine.aggregator.clusterConfig下也需设置n个集群名,和服务一一对应
+      microservicecloud-dept
+#  clusterNameExpression: 
+#    default # 对聚合的服务设置一个集群名字,集群是多个服务的聚合模型
+    
+info:
+  app.name: atguigu-microservicecloud
+  company.name: www.atguigu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
